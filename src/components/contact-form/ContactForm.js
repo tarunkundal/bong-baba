@@ -9,10 +9,10 @@ import {
   FormHelperText,
   Stack,
   Select,
-  Text,
   Textarea,
   Button,
   useToast,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 const ContactForm = () => {
@@ -98,7 +98,7 @@ const ContactForm = () => {
   };
 
   return (
-    <Stack w={"50%"}>
+    <Stack w={"50%"} bg={useColorModeValue("gray.50", "gray.600")}>
       <form onSubmit={submitFormHandler}>
         <Stack spacing={{ base: 6, md: 12 }} p="50px">
           <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="3rem">
@@ -112,6 +112,7 @@ const ContactForm = () => {
                 placeholder="First name"
                 value={data.fName}
                 onChange={handleChange}
+                borderColor={useColorModeValue("gray.300", "white")}
               />
             </FormControl>
 
@@ -122,6 +123,7 @@ const ContactForm = () => {
                 placeholder="Last name"
                 value={data.lName}
                 onChange={handleChange}
+                borderColor={useColorModeValue("gray.300", "white")}
               />
             </FormControl>
           </Flex>
@@ -135,6 +137,7 @@ const ContactForm = () => {
                 placeholder="Enter Email"
                 value={data.email}
                 onChange={handleChange}
+                borderColor={useColorModeValue("gray.300", "white")}
               />
               <FormHelperText>We'll never share your email.</FormHelperText>
             </FormControl>
@@ -146,34 +149,40 @@ const ContactForm = () => {
                 placeholder="Confirm Email"
                 value={data.cEmail}
                 onChange={handleChange}
+                borderColor={useColorModeValue("gray.300", "white")}
               />
             </FormControl>
           </Flex>
 
           <Box>
-            <Select
-              placeholder="Select option"
-              name="selectedOption"
-              variant={"filled"}
-              onChange={(e) =>
-                setSelectedOption(e.target.options[e.target.selectedIndex].text)
-              }
-            >
-              <option value="option1">
-                General Queries / Collaboration Request
-              </option>
-              <option value="option2">I want to place a Bulk Order </option>
-              <option value="option3">
-                I want to follow up an Existing Order
-              </option>
-              <option value="option4">Request for free Samples </option>
-            </Select>
-            <Text fontSize={"12px"} mt="5px">
-              *Free Sample Request is applicable for Retail Stores in Canada
-              only. Please mention your Store Name, Location along with Contact
-              Number while placing a request for Free Samples. General T&C
-              apply.
-            </Text>
+            <FormControl>
+              <Select
+                placeholder="Select option"
+                name="selectedOption"
+                variant={"filled"}
+                borderColor={useColorModeValue("gray.300", "white")}
+                onChange={(e) =>
+                  setSelectedOption(
+                    e.target.options[e.target.selectedIndex].text
+                  )
+                }
+              >
+                <option value="option1">
+                  General Queries / Collaboration Request
+                </option>
+                <option value="option2">I want to place a Bulk Order </option>
+                <option value="option3">
+                  I want to follow up an Existing Order
+                </option>
+                <option value="option4">Request for free Samples </option>
+              </Select>
+              <FormHelperText>
+                *Free Sample Request is applicable for Retail Stores in Canada
+                only. Please mention your Store Name, Location along with
+                Contact Number while placing a request for Free Samples. General
+                T&C apply.
+              </FormHelperText>
+            </FormControl>
           </Box>
 
           <Textarea
@@ -184,6 +193,7 @@ const ContactForm = () => {
             placeholder="Message"
             value={data.message}
             onChange={handleChange}
+            borderColor={useColorModeValue("gray.300", "white")}
           />
 
           <ReCAPTCHA

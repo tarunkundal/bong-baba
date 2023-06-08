@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./CigaretteComponent.css";
-import { Button, Center, Image } from "@chakra-ui/react";
-import Logo from "../assets/bongbaba.png";
+import {
+  Box,
+  Button,
+  Center,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import Logo from "../assets/BongBabaLogo.png";
+import Logo_White from "../assets/BongBabaLogoWhite-09.png";
 import { BsArrowUp } from "react-icons/bs";
 
 const CigaretteComponent = () => {
@@ -39,9 +46,11 @@ const CigaretteComponent = () => {
     });
   };
 
+  const logo = useColorModeValue(Logo, Logo_White);
+
   return (
     <>
-      {rangeValue >= 90 ? (
+      {rangeValue >= 95 ? (
         <Button
           onClick={handleBackToTop}
           position={"fixed"}
@@ -54,26 +63,66 @@ const CigaretteComponent = () => {
           <BsArrowUp color="red" />
         </Button>
       ) : (
-        <div
-          className="cigarette-container"
-          style={{ transform: `translateY(${rangeValue * 6}px)` }}
+        <Box
+          position={"fixed"}
+          top={{ base: "50px", md: "90px" }}
+          right={"20px"}
+          zIndex={999}
+          transform={`translateY(${rangeValue * 6}px)`}
+          transitionDuration={".2s"}
+          transitionTimingFunction={"ease-out"}
         >
           <div className="smoke-container">
             <div className="smoke"></div>
           </div>
 
-          <div className="cigarette">
-            <div
-              className="cigarette-tip"
-              style={{
-                width: `${rangeValue}%`,
-              }}
+          {/* cigreete */}
+          <Box
+            width="200px"
+            height="45px"
+            position="relative"
+            overflow="hidden"
+            display={"flex"}
+            justifyContent={"space-between"}
+            border={`${rangeValue}`}
+            borderLeftColor={"transparent"}
+            borderRadius={"5px"}
+          >
+            <Box />
+            {/* cigreete tip */}
+            <Box
+              height="full"
+              border={"4px"}
+              borderColor={"transparent"}
+              bg={"gray.200"}
+              borderRight={"8px"}
+              borderRightColor={"red"}
+              position="absolute"
+              top={0}
+              left={0}
+              w={`${rangeValue}%`}
             />
+
+            {/* cigrette body logo */}
             <Center>
-              <Image src={Logo} alt="logo" width={"5rem"} zIndex={55} />
+              <Image
+                src={logo}
+                alt="logo"
+                opacity={rangeValue >= 50 ? ".5" : ".9"}
+                width={"5rem"}
+                zIndex={55}
+              />
             </Center>
-          </div>
-        </div>
+
+            {/* cigrette filter */}
+            <Box
+              w={"30px"}
+              borderLeft={"2px"}
+              borderLeftColor={"white"}
+              bg={"#d28923"}
+            />
+          </Box>
+        </Box>
       )}
     </>
   );

@@ -37,6 +37,7 @@ const SecondComponent = () => {
             <Text mt="12px">@BONGBABACANADA</Text>
           </Flex>
         </a>
+        {/* Instagram basic dispaly api -- To fetch instagram posts */}
       </Stack>
     </>
   );

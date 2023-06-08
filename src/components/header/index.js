@@ -6,7 +6,8 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Logo from "../assets/bongbaba.png";
+import Logo from "../assets/BongBabaLogo.png";
+import Logo_White from "../assets/BongBabaLogoWhite-09.png";
 import BackgroundImage from "../assets/background-image.webp";
 
 import {
@@ -31,8 +32,8 @@ const Header = () => {
     >
       <Flex
         zIndex={5}
-        px={"5rem"}
-        py={"1rem"}
+        px={{ base: "1rem", md: "5rem" }}
+        py={{ base: ".5rem", md: "1rem" }}
         justifyContent={"space-between"}
         alignItems={"center"}
         bg={useColorModeValue("gray.50", "gray.900")}
@@ -42,13 +43,11 @@ const Header = () => {
         position={"fixed"}
         top={0}
         w={"100%"}
-        h={"7rem"}
       >
         <Image
-          src={Logo}
+          src={useColorModeValue(Logo, Logo_White)}
           alt="logo"
-          w={"12rem"}
-          bg={useColorModeValue("gray.100", "gray.900")}
+          w={{ base: "8rem", md: "12rem" }}
         />
 
         <CigaretteComponent />
