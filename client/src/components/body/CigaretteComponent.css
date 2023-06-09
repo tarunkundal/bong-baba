@@ -1,0 +1,184 @@
+.cigarette-tip {
+  border-left: 10px solid #fc0101;
+  min-width: 20px;
+  height: 100%;
+  background-color: #f37070;
+  opacity: .7;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* smoke */
+.smoke-container {
+  position: relative;
+  width: 20px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.smoke {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 40px;
+  background-color: #cccacabe;
+  animation: smokeAnimation 1.2s linear infinite;
+}
+
+@keyframes smokeAnimation {
+  0% {
+    top: 100%;
+    opacity: 0.7;
+  }
+  50% {
+    top: -50%;
+    opacity: 0.3;
+  }
+  100% {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+
+/* cigreete new component css */
+
+.cigarette-holder {
+  display: flex;
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  width: 400px;
+  height: 30px;
+  /* position: relative; */
+  justify-content: flex-end;
+  border: 2px solid red;
+}
+
+.cigarette-holder:before {
+  position: absolute;
+  border-radius: 0 0 50% 50%;
+  width: 90%;
+  height: 6px;
+  filter: blur(3px);
+  background: rgba(0, 0, 0, 0.2);
+  top: 130%;
+  right: 5%;
+  animation: shrinkShade 14s linear infinite;
+}
+
+.filter { 
+  background-color: #f3a41d;
+  background: -moz-linear-gradient(top, #dd8e04, #f3a41d, #dd8e04);
+  background: -webkit-linear-gradient(top, #dd8e04, #f3a41d, #dd8e04);
+  position: relative;
+}
+
+.filter:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background: -moz-linear-gradient(top, #f3a41d, yellow, #f3a41d);
+  background: -webkit-linear-gradient(top, #f3a41d, yellow, #f3a41d);
+  background: -ms-linear-gradient(top, #f3a41d, yellow, #f3a41d);
+  background: -o-linear-gradient(top, #f3a41d, yellow, #f3a41d);
+}
+
+
+
+
+.smoke, .smoke-2, .smoke-3, .smoke-4, .smoke-5 {
+  position: absolute;
+  width: 1px;
+  height: 25px;
+  top: 0%;
+  left: 0;
+  animation: animeSmoke 2.2s linear infinite;
+  z-index: -1;
+}
+
+.smoke-2 {
+  animation: animeSmoke2 1.7s linear 0.5s infinite;
+}
+
+.smoke-3 {
+  animation: animeSmoke3 2.2s linear 1s infinite;
+}
+
+.smoke-4 {
+  animation: animeSmoke4 1.7s linear 1.5s infinite;
+}
+
+.smoke-5 {
+  animation: animeSmoke2 1.7s linear 2s infinite;
+}
+
+@keyframes animeSmoke {
+  90% {
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translate(30px, -120px);
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes animeSmoke2 {
+  50% {
+    opacity: 1;
+  }
+  70%{
+    opacity: .5;
+  }
+  100% {
+    transform: translate(0, -120px);
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes animeSmoke3 {
+  90% {
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translate(20px, -120px);
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes animeSmoke4 {
+  90% {
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translate(-10px, -120px);
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+
+@keyframes shrinkShade {
+  20% {
+    width: 90%;
+  }
+  80% {
+    width: 30%;
+  }
+  
+  100% {
+    width: 30%;
+  }
+}
+
